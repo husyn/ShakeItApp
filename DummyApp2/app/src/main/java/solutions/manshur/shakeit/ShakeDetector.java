@@ -1,9 +1,9 @@
-package solutions.manshur.dummyapp2;
+package solutions.manshur.shakeit;
 
 import android.hardware.Sensor;
-        import android.hardware.SensorEvent;
-        import android.hardware.SensorEventListener;
-        import android.hardware.SensorManager;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 
 
 /**

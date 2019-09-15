@@ -1,10 +1,14 @@
-package solutions.manshur.dummyapp2;
+package solutions.manshur.shakeit;
 
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
@@ -22,6 +26,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        AudioManager audioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
+        // For example to set the volume of played media to maximum.
+        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), 0);
+
         // Initialize media player
         mMediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.sound);
 
@@ -34,9 +42,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Toast.makeText(MainActivity.this, "shake", Toast.LENGTH_SHORT).show();
-
-        mMediaPlayer.start();
+        final Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 
         // ShakeDetector initialization
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -50,6 +56,13 @@ public class MainActivity extends AppCompatActivity {
 
 
                 try {
+
+                    if (Build.VERSION.SDK_INT >= 26) {
+                        vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
+                    } else {
+                        vibrator.vibrate(200);
+                    }
+
                     mMediaPlayer.start();
                 } catch (IllegalStateException e) {
                     e.printStackTrace();

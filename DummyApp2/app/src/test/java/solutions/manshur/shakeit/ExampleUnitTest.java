@@ -1,8 +1,8 @@
-package solutions.manshur.dummyapp2;
+package solutions.manshur.shakeit;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
