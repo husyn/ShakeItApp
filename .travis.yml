@@ -1,11 +1,20 @@
 language: android
 dist: trusty
+
+env:
+ global:
+ - ANDROID_API=28
+ - ANDROID_BUILD_TOOLS=29.0.4
+
 android:
   components:
+    - tools
     - platform-tools
-    - build-tools-29.0.4
+    - build-tools-$ANDROID_BUILD_TOOLS
+    - android-$ANDROID_API
     
 
 script:
     - echo "Travis branch is $TRAVIS_BRANCH"
     - echo "Travis branch is in pull request $TRAVIS_PULL+REQUEST"
+    - "./gradlew clean build"
