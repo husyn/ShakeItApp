@@ -10,7 +10,21 @@ import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
 import android.widget.Toast;
+import android.app.Dialog;
+import android.widget.Button;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,13 +34,14 @@ public class MainActivity extends AppCompatActivity {
     // Declare the MediaPlayer object
     private MediaPlayer mMediaPlayer;
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        AudioManager audioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
+    AudioManager audioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
         // For example to set the volume of played media to maximum.
         audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), 0);
 
@@ -43,6 +58,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         final Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+
+        final Dialog dialog = new Dialog(MainActivity.this);
+        dialog.setContentView(R.layout.popup);
+        dialog.setTitle("Image");
+
 
         // ShakeDetector initialization
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -64,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     mMediaPlayer.start();
+                    dialog.show();
                 } catch (IllegalStateException e) {
                     e.printStackTrace();
                 }

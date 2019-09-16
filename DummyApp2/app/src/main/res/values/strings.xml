@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">ShakeIt</string>
     <string name="action_settings">Settings</string>
+    <string name="popup_dialog">Image popup</string>
+    <string name="close_button">Close</string>
+    <string name="filter_button">Filter</string>
 </resources>
