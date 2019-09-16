@@ -12,11 +12,16 @@ android:
     - platform-tools
     - build-tools-$ANDROID_BUILD_TOOLS
     - android-$ANDROID_API
-    
+
+licenses:
+ - android-sdk-preview-license-.+
+ - android-sdk-license-.+
+ - google-gdk-license-.+
 
 script:
     - echo "Travis branch is $TRAVIS_BRANCH"
     - echo "Travis branch is in pull request $TRAVIS_PULL+REQUEST"
+    - "yes | sdkmanager --licenses"
     - "cd DummyApp2"
     - "chmod +x ./gradlew"
     - "./gradlew clean build"
