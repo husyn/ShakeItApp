@@ -10,20 +10,10 @@ import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ImageView;
-import android.widget.Toast;
 import android.app.Dialog;
-import android.widget.Button;
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-
+import android.view.Gravity;
+import android.view.ViewGroup;
+import android.view.Window;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -61,8 +51,10 @@ public class MainActivity extends AppCompatActivity {
 
         final Dialog dialog = new Dialog(MainActivity.this);
         dialog.setContentView(R.layout.popup);
-        dialog.setTitle("Image");
-
+        dialog.setTitle("Suggestion");
+        Window window = dialog.getWindow();
+        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        window.setGravity(Gravity.CENTER);
 
         // ShakeDetector initialization
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -71,9 +63,6 @@ public class MainActivity extends AppCompatActivity {
         mShakeDetector.setOnShakeListener(new ShakeDetector.OnShakeListener() {
 
             public void onShake() {
-
-                Toast.makeText(MainActivity.this, "shake", Toast.LENGTH_SHORT).show();
-
 
                 try {
 
