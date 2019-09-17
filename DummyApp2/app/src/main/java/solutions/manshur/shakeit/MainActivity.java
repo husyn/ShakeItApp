@@ -14,6 +14,10 @@ import android.app.Dialog;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.view.View;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -55,6 +59,23 @@ public class MainActivity extends AppCompatActivity {
         Window window = dialog.getWindow();
         window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         window.setGravity(Gravity.CENTER);
+
+        ImageButton dialogButton = (ImageButton) dialog.findViewById(R.id.button_clear);
+        // if button is clicked, close the custom dialog
+        dialogButton.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        ImageButton dialogButton2 = (ImageButton) dialog.findViewById(R.id.button_filter);
+        dialogButton2.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                final Dialog filter_dialog = new Dialog(MainActivity.this);
+                filter_dialog.setContentView(R.layout.filter);
+                filter_dialog.setTitle("Filter");
+            }
+        });
 
         // ShakeDetector initialization
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
