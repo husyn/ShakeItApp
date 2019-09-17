@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 final Dialog filter_dialog = new Dialog(MainActivity.this);
                 filter_dialog.setContentView(R.layout.filter);
                 filter_dialog.setTitle("Filter");
+                filter_dialog.show();
             }
         });
 
