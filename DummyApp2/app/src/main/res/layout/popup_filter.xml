@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/lbl_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        android:text="Filter Suggestions"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/lbl_filter_area"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lbl_title"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="2dp"
+        android:text="Filter Area (KM)"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_margin="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lbl_filter_area"
+        android:paddingTop="4dp" />
+
+    <CheckBox
+        android:id="@+id/checkBoxIndian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seekBar"
+        android:layout_marginTop="16dp"
+        android:text="Indian" />
+
+    <CheckBox
+        android:id="@+id/checkBoxFastFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/checkBoxIndian"
+        android:layout_marginTop="4dp"
+        android:text="FastFood" />
+
+    <CheckBox
+        android:id="@+id/checkBoxChinese"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/checkBoxFastFood"
+        android:layout_marginTop="4dp"
+        android:text="Chinese" />
+
+    <CheckBox
+        android:id="@+id/checkBoxMalay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seekBar"
+        android:layout_toRightOf="@id/checkBoxIndian"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:text="Malay" />
+
+</RelativeLayout>
+

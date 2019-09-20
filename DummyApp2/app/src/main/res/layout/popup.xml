@@ -1,48 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <ImageButton
+        android:id="@+id/button_filter"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="4dp"
+        android:background="@android:drawable/ic_menu_preferences"
+        android:contentDescription="@string/filter_button"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"/>
 
     <ImageButton
         android:id="@+id/button_clear"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
         android:background="@android:drawable/ic_menu_close_clear_cancel"
         android:contentDescription="@string/close_button"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintEnd_toStartOf="@+id/button_filter" />
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@id/button_filter"/>
 
-    <ImageButton
-        android:id="@+id/button_filter"
-        android:layout_width="28dp"
-        android:layout_height="22dp"
-        android:layout_marginBottom="4dp"
-        android:background="@drawable/ic_settings"
-        android:contentDescription="@string/filter_button"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:contentDescription="@string/popup_dialog"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/kfc" />
+        android:layout_below="@id/button_filter"
+        android:src="@mipmap/mc2"
+        android:adjustViewBounds="true"
+        android:layout_centerHorizontal="true" />
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.84" />
-
-
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

@@ -1,6 +1,7 @@
 package solutions.manshur.shakeit;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.media.AudioManager;
@@ -9,15 +10,17 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.app.Dialog;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.view.View;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -54,13 +57,13 @@ public class MainActivity extends AppCompatActivity {
         final Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 
         final Dialog dialog = new Dialog(MainActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.popup);
-        dialog.setTitle("Suggestion");
         Window window = dialog.getWindow();
         window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         window.setGravity(Gravity.CENTER);
 
-        ImageButton dialogButton = (ImageButton) dialog.findViewById(R.id.button_clear);
+        ImageButton dialogButton = dialog.findViewById(R.id.button_clear);
         // if button is clicked, close the custom dialog
         dialogButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
@@ -68,12 +71,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ImageButton dialogButton2 = (ImageButton) dialog.findViewById(R.id.button_filter);
+        ImageButton dialogButton2 = dialog.findViewById(R.id.button_filter);
         dialogButton2.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                final Dialog filter_dialog = new Dialog(MainActivity.this);
-                filter_dialog.setContentView(R.layout.filter);
-                filter_dialog.setTitle("Filter");
+                dialog.dismiss();
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                LayoutInflater inflater = getLayoutInflater();
+                View dialogView = inflater.inflate(R.layout.popup_filter, null);
+                builder.setView(dialogView).setPositiveButton("Filter", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+//                        dialog.dismiss();
+                        Toast.makeText(MainActivity.this,"Filter applied",Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                final AlertDialog filter_dialog = builder.create();
                 filter_dialog.show();
             }
         });
